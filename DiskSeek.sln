@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cilindros", "Cilindros\Cilindros.csproj", "{D10270BA-FD9A-4959-9113-AF6AA03E35D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskSeek", "Cilindros\DiskSeek.csproj", "{D10270BA-FD9A-4959-9113-AF6AA03E35D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CilindrosUnitTest", "UnitTestProject1\CilindrosUnitTest.csproj", "{7EC3FA2C-0B58-49E0-98DA-448B4076E535}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskSeekUnitTest", "UnitTestProject1\DiskSeekUnitTest.csproj", "{7EC3FA2C-0B58-49E0-98DA-448B4076E535}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
