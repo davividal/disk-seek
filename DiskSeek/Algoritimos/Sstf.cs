@@ -12,11 +12,6 @@ namespace DiskSeek.Algoritimos
 
         public Sstf(decimal maximo) : base(maximo){}
 
-        public override int proximoCilindro(int cilindroAtual)
-        {
-            throw new NotImplementedException();
-        }
-
         public override int getDistancia()
         {
             throw new NotImplementedException();

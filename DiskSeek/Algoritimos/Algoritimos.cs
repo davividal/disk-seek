@@ -8,11 +8,38 @@ namespace DiskSeek.Algoritimos
 {
     public abstract class Algoritimos
     {
-        private int cilindroMaximo;
+        private decimal cilindroMaximo;
 
-        public decimal cilindroAtual { get; set; }
+        private decimal _cilindroAtual;
 
-        public decimal cilindroAnterior { get; set; }
+        public decimal cilindroAtual
+        {
+            get { return _cilindroAtual; }
+            set {
+                if (value >= cilindroMaximo)
+                {
+                    throw new ArgumentException("Cilindro atual maior que cilindro máximo.");
+                }
+
+                _cilindroAtual = value;
+                
+            }
+        }
+
+        private decimal _cilindroAnterior;
+
+        public decimal cilindroAnterior
+        {
+            get { return _cilindroAnterior; }
+            set {
+                if (value >= cilindroMaximo)
+                {
+                    throw new ArgumentException("Cilindro anterior maior que cilindro máximo.");
+                }
+
+                _cilindroAnterior = value;
+            }
+        }
 
         public Algoritimos(decimal maximo)
         {
@@ -47,8 +74,6 @@ namespace DiskSeek.Algoritimos
                 }
             }
         }
-
-        abstract public int proximoCilindro(int cilindroAtual);
 
         abstract public int getDistancia();
 
