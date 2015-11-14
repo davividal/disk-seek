@@ -8,7 +8,11 @@ namespace DiskSeek.Algoritimos
 {
     public abstract class Algoritimos
     {
-        private decimal cilindroMaximo;
+        protected Int32 distancia;
+
+        protected List<string> sequencia;
+
+        protected decimal cilindroMaximo;
 
         private decimal _cilindroAtual;
 
@@ -44,6 +48,7 @@ namespace DiskSeek.Algoritimos
         public Algoritimos(decimal maximo)
         {
             this.cilindroMaximo = Convert.ToInt32(maximo);
+            this.distancia = 0;
         }
 
         /// <summary>
@@ -75,10 +80,21 @@ namespace DiskSeek.Algoritimos
             }
         }
 
-        abstract public int getDistancia();
+        abstract public void processa();
 
-        abstract public void setSequencia(String sequencia);
+        public void setSequencia(String sequencia)
+        {
+            this.sequencia = sequencia.Split(new Char[] { ';', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
 
-        abstract public String getSequenciaLeitura();
+        public String getSequenciaLeitura()
+        {
+            return String.Join(",", this.sequencia);
+        }
+
+        public Int32 getDistancia()
+        {
+            return this.distancia;
+        }
     }
 }

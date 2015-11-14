@@ -9,7 +9,7 @@ namespace DiskSeekUnitTest
     public class CscanUnitTest
     {
         [TestMethod]
-        public void TestNumeroCilindros()
+        public void TestNumeroCilindrosCscan()
         {
             String seqExercicio = "86,1470,913,1774,948,1509,1022,1750,130";
             decimal cilindroAnterior = 125;
@@ -21,23 +21,27 @@ namespace DiskSeekUnitTest
             alg.cilindroAtual = Convert.ToInt32(cilindroAtual);
             alg.setSequencia(seqExercicio);
 
+            alg.processa();
+
             distancia = alg.getDistancia();
 
-            Assert.AreEqual(5026, distancia);
+            Assert.AreEqual(4986, distancia);
         }
 
         [TestMethod]
-        public void TestSequenciaLeitura()
+        public void TestSequenciaLeituraCscan()
         {
             String seqExercicio = "86,1470,913,1774,948,1509,1022,1750,130";
             decimal cilindroAnterior = 125;
             decimal cilindroAtual = 143;
-            Sstf alg = new Sstf(4999);
+            Cscan alg = new Cscan(4999);
             String seqLeitura;
 
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);
             alg.cilindroAtual = Convert.ToInt32(cilindroAtual);
             alg.setSequencia(seqExercicio);
+
+            alg.processa();
 
             seqLeitura = alg.getSequenciaLeitura();
 

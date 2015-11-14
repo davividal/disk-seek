@@ -36,6 +36,18 @@ namespace DiskSeekUnitTest
         }
 
         [TestMethod]
+        public void TestSentidoIntroTrilha0Intermediario()
+        {
+            decimal cilindroAnterior = 43;
+            decimal cilindroAtual = 30;
+            Algoritimos alg = new Sstf(this.cilindroMaximo);
+            alg.cilindroAnterior = cilindroAnterior;
+            alg.cilindroAtual = cilindroAtual;
+
+            Assert.AreEqual("Indo para a trilha 0", alg.getSentido());
+        }
+
+        [TestMethod]
         public void TestSentidoParado()
         {
             decimal cilindroAnterior = 0;

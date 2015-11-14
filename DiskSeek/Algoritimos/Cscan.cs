@@ -6,23 +6,69 @@ using System.Threading.Tasks;
 
 namespace DiskSeek.Algoritimos
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <author>
+    /// Davi
+    /// </author>
     public class Cscan : Algoritimos
     {
         public Cscan(decimal maximo) : base(maximo){}
 
-        public override int getDistancia()
+        public override void processa()
         {
-            throw new NotImplementedException();
-        }
+            decimal sentido = this.determinaSentido();
 
-        public override void setSequencia(string sequencia)
-        {
-            throw new NotImplementedException();
-        }
+            Predicate<String> matchInternos = delegate(String block) 
+            {
+                return Convert.ToDecimal(block) < this.cilindroAtual;
+            };
 
-        public override String getSequenciaLeitura()
-        {
-            throw new NotImplementedException();
+            Predicate<String> matchExternos = delegate(String block)
+            {
+                return Convert.ToDecimal(block) > this.cilindroAtual;
+            };
+
+            List<string> ordenada = new List<string>();
+
+            List<String> internos = this.sequencia.FindAll(matchInternos);
+            List<String> externos = this.sequencia.FindAll(matchExternos);
+
+            internos = internos.OrderBy(block => Convert.ToInt32(block)).ToList();
+            internos.Insert(0, "0");
+            externos = externos.OrderBy(blk => Convert.ToInt32(blk)).ToList();
+            externos.Add(Convert.ToString(this.cilindroMaximo));
+
+            if (sentido < 0)
+            {
+                // Indo da borda para a extremidade
+                externos.AddRange(internos);
+                this.sequencia = externos;
+            }
+            else
+            {
+                externos.AddRange(internos);
+                this.sequencia = externos;
+            }
+
+            List<Int32> diferencas = new List<Int32>();
+            for (int i = 0, diff = 0; i < this.sequencia.Count; i++)
+            {
+                if (Convert.ToInt32(this.sequencia[i]) == 0) continue;
+
+                if (i == 0)
+                {
+                    diff = Convert.ToInt32(this.sequencia[i]) - Convert.ToInt32(this.cilindroAtual);
+                }
+                else
+                {
+                    diff = Convert.ToInt32(this.sequencia[i]) - Convert.ToInt32(this.sequencia[i - 1]);
+                }
+                
+                diferencas.Add(diff);
+            }
+            this.distancia = diferencas.Aggregate((acc, next) => acc + next);
         }
     }
 }

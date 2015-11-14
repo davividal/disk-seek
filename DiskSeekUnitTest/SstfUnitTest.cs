@@ -21,6 +21,8 @@ namespace DiskSeekUnitTest
             alg.cilindroAtual = Convert.ToInt32(cilindroAtual);
             alg.setSequencia(seqExercicio);
 
+            alg.processa();
+
             distancia = alg.getDistancia();
 
             Assert.AreEqual(138, distancia);
@@ -38,6 +40,8 @@ namespace DiskSeekUnitTest
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);
             alg.cilindroAtual = Convert.ToInt32(cilindroAtual);
             alg.setSequencia(seqExercicio);
+
+            alg.processa();
 
             seqLeitura = alg.getSequenciaLeitura();
 
@@ -57,6 +61,8 @@ namespace DiskSeekUnitTest
             alg.cilindroAtual = Convert.ToInt32(cilindroAtual);
             alg.setSequencia(seqExercicio);
 
+            alg.processa();
+
             distancia = alg.getDistancia();
 
             Assert.AreEqual(1785, distancia);
@@ -74,6 +80,8 @@ namespace DiskSeekUnitTest
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);
             alg.cilindroAtual = Convert.ToInt32(cilindroAtual);
             alg.setSequencia(seqExercicio);
+
+            alg.processa();
 
             seqLeitura = alg.getSequenciaLeitura();
 

@@ -52,6 +52,8 @@ namespace DiskSeek
         {
             Algoritimos.Algoritimos alg = (Algoritimos.Algoritimos)e.Argument;
 
+            alg.processa();
+
             e.Result = alg;
         }
 
@@ -67,6 +69,8 @@ namespace DiskSeek
         {
             Algoritimos.Algoritimos alg = (Algoritimos.Algoritimos)e.Argument;
 
+            alg.processa();
+
             e.Result = alg;
         }
 
@@ -81,6 +85,8 @@ namespace DiskSeek
         private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
         {
             Algoritimos.Algoritimos alg = (Algoritimos.Algoritimos)e.Argument;
+
+            alg.processa();
 
             e.Result = alg;
         }
