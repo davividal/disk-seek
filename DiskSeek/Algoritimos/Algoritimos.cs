@@ -20,7 +20,7 @@ namespace DiskSeek.Algoritimos
         {
             get { return _cilindroAtual; }
             set {
-                if (value >= cilindroMaximo)
+                if (value > cilindroMaximo)
                 {
                     throw new ArgumentException("Cilindro atual maior que cilindro máximo.");
                 }
@@ -36,7 +36,7 @@ namespace DiskSeek.Algoritimos
         {
             get { return _cilindroAnterior; }
             set {
-                if (value >= cilindroMaximo)
+                if (value > cilindroMaximo)
                 {
                     throw new ArgumentException("Cilindro anterior maior que cilindro máximo.");
                 }
@@ -45,9 +45,9 @@ namespace DiskSeek.Algoritimos
             }
         }
 
-        public Algoritimos(decimal maximo)
+        public Algoritimos(decimal total)
         {
-            this.cilindroMaximo = Convert.ToInt32(maximo);
+            this.cilindroMaximo = Convert.ToInt32(total) - 1;
             this.distancia = 0;
         }
 
@@ -80,7 +80,15 @@ namespace DiskSeek.Algoritimos
             }
         }
 
-        abstract public void processa();
+        public void processa()
+        {
+            this.ordenaSequencia();
+
+            this.calculaDistancia();
+        }
+
+        abstract protected void ordenaSequencia();
+        abstract protected void calculaDistancia();
 
         public void setSequencia(String sequencia)
         {

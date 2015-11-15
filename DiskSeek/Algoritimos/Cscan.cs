@@ -16,7 +16,7 @@ namespace DiskSeek.Algoritimos
     {
         public Cscan(decimal maximo) : base(maximo){}
 
-        public override void processa()
+        protected override void ordenaSequencia()
         {
             decimal sentido = this.determinaSentido();
 
@@ -36,9 +36,10 @@ namespace DiskSeek.Algoritimos
             List<String> externos = this.sequencia.FindAll(matchExternos);
 
             internos = internos.OrderBy(block => Convert.ToInt32(block)).ToList();
-            internos.Insert(0, "0");
             externos = externos.OrderBy(blk => Convert.ToInt32(blk)).ToList();
-            externos.Add(Convert.ToString(this.cilindroMaximo));
+
+            if (internos.First() != "0") internos.Insert(0, "0");
+            if (externos.Last() != Convert.ToString(this.cilindroMaximo)) externos.Add(Convert.ToString(this.cilindroMaximo));
 
             if (sentido < 0)
             {
@@ -48,10 +49,13 @@ namespace DiskSeek.Algoritimos
             }
             else
             {
-                externos.AddRange(internos);
-                this.sequencia = externos;
+                internos.AddRange(externos);
+                this.sequencia = internos;
             }
+        }
 
+        protected override void calculaDistancia()
+        {
             List<Int32> diferencas = new List<Int32>();
             for (int i = 0, diff = 0; i < this.sequencia.Count; i++)
             {
@@ -65,7 +69,7 @@ namespace DiskSeek.Algoritimos
                 {
                     diff = Convert.ToInt32(this.sequencia[i]) - Convert.ToInt32(this.sequencia[i - 1]);
                 }
-                
+
                 diferencas.Add(diff);
             }
             this.distancia = diferencas.Aggregate((acc, next) => acc + next);

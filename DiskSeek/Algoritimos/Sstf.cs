@@ -16,7 +16,12 @@ namespace DiskSeek.Algoritimos
     {
         public Sstf(decimal maximo) : base(maximo){}
 
-        public override void processa()
+        protected override void ordenaSequencia()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void calculaDistancia()
         {
             throw new NotImplementedException();
         }
