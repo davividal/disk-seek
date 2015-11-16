@@ -35,8 +35,8 @@ namespace DiskSeek.Algoritimos
             List<String> internos = this.sequencia.FindAll(matchInternos);
             List<String> externos = this.sequencia.FindAll(matchExternos);
 
-            internos = internos.OrderBy(block => Convert.ToInt32(block)).ToList();
-            externos = externos.OrderBy(blk => Convert.ToInt32(blk)).ToList();
+            internos = internos.OrderBy(block => Convert.ToInt32(block)).DefaultIfEmpty().ToList();
+            externos = externos.OrderBy(blk => Convert.ToInt32(blk)).DefaultIfEmpty().ToList();
 
             if (sentido > 0)
             {

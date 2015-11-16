@@ -104,5 +104,10 @@ namespace DiskSeek.Algoritimos
         {
             return this.distancia;
         }
+
+        public List<String> getSequencia()
+        {
+            return this.sequencia;
+        }
     }
 }

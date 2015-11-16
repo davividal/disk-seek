@@ -14,7 +14,7 @@ namespace DiskSeekUnitTest
             String seqExercicio = "68,14,6,28,130,94,6,42";
             decimal cilindroAnterior = 37;
             decimal cilindroAtual = 20;
-            Sstf alg = new Sstf(299);
+            Sstf alg = new Sstf(300);
             int distancia = 0;
 
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);
@@ -34,7 +34,7 @@ namespace DiskSeekUnitTest
             String seqExercicio = "68,14,6,28,130,94,6,42";
             decimal cilindroAnterior = 37;
             decimal cilindroAtual = 20;
-            Sstf alg = new Sstf(299);
+            Sstf alg = new Sstf(300);
             String seqLeitura;
 
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);
@@ -54,7 +54,7 @@ namespace DiskSeekUnitTest
             String seqExercicio = "86,1470,913,1774,948,1509,1022,1750,130";
             decimal cilindroAnterior = 125;
             decimal cilindroAtual = 143;
-            Sstf alg = new Sstf(4999);
+            Sstf alg = new Sstf(5000);
             int distancia = 0;
 
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);
@@ -65,7 +65,7 @@ namespace DiskSeekUnitTest
 
             distancia = alg.getDistancia();
 
-            Assert.AreEqual(1785, distancia);
+            Assert.AreEqual(1745, distancia);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace DiskSeekUnitTest
             String seqExercicio = "86,1470,913,1774,948,1509,1022,1750,130";
             decimal cilindroAnterior = 125;
             decimal cilindroAtual = 143;
-            Sstf alg = new Sstf(4999);
+            Sstf alg = new Sstf(5000);
             String seqLeitura;
 
             alg.cilindroAnterior = Convert.ToInt32(cilindroAnterior);

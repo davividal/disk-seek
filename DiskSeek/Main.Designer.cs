@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.maxCilindros = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.processaFilas = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.fila = new System.Windows.Forms.TextBox();
@@ -57,17 +62,19 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.maxCilindros = new System.Windows.Forms.NumericUpDown();
+            this.graficos = new System.Windows.Forms.TabPage();
+            this.grafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxCilindros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cilindroAtual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cilindroAnterior)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxCilindros)).BeginInit();
+            this.graficos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grafico)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -76,6 +83,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.graficos);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -101,12 +109,39 @@
             this.tabPage1.Text = "Dados de Entrada";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // maxCilindros
+            // 
+            this.maxCilindros.Location = new System.Drawing.Point(111, 21);
+            this.maxCilindros.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.maxCilindros.Name = "maxCilindros";
+            this.maxCilindros.Size = new System.Drawing.Size(120, 20);
+            this.maxCilindros.TabIndex = 0;
+            this.maxCilindros.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.maxCilindros.ValueChanged += new System.EventHandler(this.maxCilindros_ValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Máximo de cilindros";
+            // 
             // processaFilas
             // 
             this.processaFilas.Location = new System.Drawing.Point(306, 249);
             this.processaFilas.Name = "processaFilas";
             this.processaFilas.Size = new System.Drawing.Size(75, 23);
-            this.processaFilas.TabIndex = 12;
+            this.processaFilas.TabIndex = 4;
             this.processaFilas.Text = "&Processar";
             this.processaFilas.UseVisualStyleBackColor = true;
             this.processaFilas.Click += new System.EventHandler(this.processaFilas_Click);
@@ -127,7 +162,7 @@
             this.fila.Multiline = true;
             this.fila.Name = "fila";
             this.fila.Size = new System.Drawing.Size(375, 105);
-            this.fila.TabIndex = 10;
+            this.fila.TabIndex = 3;
             // 
             // cilindroAtual
             // 
@@ -139,7 +174,7 @@
             0});
             this.cilindroAtual.Name = "cilindroAtual";
             this.cilindroAtual.Size = new System.Drawing.Size(80, 20);
-            this.cilindroAtual.TabIndex = 9;
+            this.cilindroAtual.TabIndex = 2;
             // 
             // cilindroAnterior
             // 
@@ -151,7 +186,7 @@
             0});
             this.cilindroAnterior.Name = "cilindroAnterior";
             this.cilindroAnterior.Size = new System.Drawing.Size(80, 20);
-            this.cilindroAnterior.TabIndex = 8;
+            this.cilindroAnterior.TabIndex = 1;
             // 
             // label2
             // 
@@ -346,32 +381,33 @@
             this.backgroundWorker3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker3_DoWork);
             this.backgroundWorker3.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker3_RunWorkerCompleted);
             // 
-            // label10
+            // graficos
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 23);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(99, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Máximo de cilindros";
+            this.graficos.Controls.Add(this.grafico);
+            this.graficos.Location = new System.Drawing.Point(4, 22);
+            this.graficos.Name = "graficos";
+            this.graficos.Size = new System.Drawing.Size(387, 278);
+            this.graficos.TabIndex = 4;
+            this.graficos.Text = "Gráficos";
+            this.graficos.UseVisualStyleBackColor = true;
             // 
-            // maxCilindros
+            // grafico
             // 
-            this.maxCilindros.Location = new System.Drawing.Point(111, 21);
-            this.maxCilindros.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.maxCilindros.Name = "maxCilindros";
-            this.maxCilindros.Size = new System.Drawing.Size(120, 20);
-            this.maxCilindros.TabIndex = 14;
-            this.maxCilindros.Value = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.maxCilindros.ValueChanged += new System.EventHandler(this.maxCilindros_ValueChanged);
+            chartArea1.Name = "ChartArea1";
+            this.grafico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.grafico.Legends.Add(legend1);
+            this.grafico.Location = new System.Drawing.Point(3, 3);
+            this.grafico.Name = "grafico";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XAxisType = System.Windows.Forms.DataVisualization.Charting.AxisType.Secondary;
+            this.grafico.Series.Add(series1);
+            this.grafico.Size = new System.Drawing.Size(381, 272);
+            this.grafico.TabIndex = 0;
+            this.grafico.Text = "chart1";
             // 
             // Main
             // 
@@ -385,6 +421,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxCilindros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cilindroAtual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cilindroAnterior)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -395,7 +432,8 @@
             this.tabPage4.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxCilindros)).EndInit();
+            this.graficos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grafico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,6 +472,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker3;
         private System.Windows.Forms.NumericUpDown maxCilindros;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TabPage graficos;
+        private System.Windows.Forms.DataVisualization.Charting.Chart grafico;
 
     }
 }
